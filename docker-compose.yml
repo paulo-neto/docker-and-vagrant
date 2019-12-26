@@ -1,0 +1,21 @@
+version: '3'
+services: 
+    mongodb:
+        image: mongo
+        networks: 
+            - bureau-network
+        container_name: mongodb_bureau
+        ports: 
+            - "27017:27017"
+
+    bureau_api:
+        image: nestjs/schematics
+        networks: 
+            - bureau-network
+        container_name: bureau_api
+        ports: 
+            - "3000:3000"
+        
+networks: 
+    bureau-network:
+        driver: bridge
